@@ -4,7 +4,8 @@ plugins {
 }
 apply plugin: 'application'
 apply plugin: 'jacoco'
-mainClassName = 'Main'
+mainClassName = 'HelloWorld'
+
 // In this section you declare where to find the dependencies of your project
 repositories {
     jcenter()
