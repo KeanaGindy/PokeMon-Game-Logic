@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="WhiteBox" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-04-14T15:40:08" hostname="DESKTOP-6DJAQ8I" time="0.0">
+  <properties/>
+  <testcase name="isGreaterTest" classname="WhiteBox" time="0.0"/>
+  <system-out><![CDATA[Before Class
+Before Test Case
+Test
+After Test Case
+After Class
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
