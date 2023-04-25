@@ -14,6 +14,10 @@ public class WorldFactory implements WorldFactoryInt {
         trainers.add(trainer);
     }
 
+    public List<TrainerFactory> getTrainers(){
+        return trainers;
+    }
+
     public void startSimulation() {
         WorldMediator mediator = new WorldMediator(trainers);
         int numCycles = 0;
