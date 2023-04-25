@@ -1,16 +1,23 @@
 package Decorators;
 
-import java.util.List;
+import Base.AttackFactory;
+import Base.CodeAMonFactory;
 
-import Base.Attack;
-import Base.CodeAMon;
+public class GrassAMon extends CodeAMonFactory {
 
-public class GrassAMon extends CodeAMon {
-
-    private static List<Attack> attacks;
-    
     public GrassAMon(String name) {
         super(name, "grass");
+        this.defense = 15;
+
+        AttackFactory leafStorm = new AttackFactory("leafStorm", 20, "grass");
+        this.addAttack(leafStorm);
+
+        AttackFactory glassyGlide = new AttackFactory("glassyGlide", 30, "grass");
+        this.addAttack(glassyGlide);
+
+        AttackFactory petalBlizzard  = new AttackFactory("petalBlizzard", 40, "grass");
+        this.addAttack(petalBlizzard);
+
 
     }
     
