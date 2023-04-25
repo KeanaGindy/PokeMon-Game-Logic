@@ -24,3 +24,6 @@ type of the user.
 - Code-a-mons should be of different types and gain advantages or disadvantages based on their opponent’s type. If the attack of a code-a-mon matches the type of the opponent, its damage is higher.
 - In the night, a trainer's first Code-A-Mon will evolve and will recieve a random bonus attack.
 - Only one battle can take place at a time. A battle is always between two trainers and each using one code-a-mon.
+
+# Screen Cast
+https://drive.google.com/file/d/1-sKKTS4AR73Xp-bQcXqEi9Rw81x9bW6K/view?usp=sharing
