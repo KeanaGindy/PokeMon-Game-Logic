@@ -48,4 +48,5 @@ public interface TrainerFactoryInt {
      * @return True if the trainer has at least one active CodeAMonFactory object, false otherwise.
      */
     boolean hasActiveCodeAMon();
+
 }

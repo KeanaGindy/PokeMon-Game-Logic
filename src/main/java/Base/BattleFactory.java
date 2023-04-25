@@ -1,5 +1,7 @@
 package Base;
 
+import java.util.HashMap;
+import java.util.Map;
 
 public class BattleFactory implements BattleFactoryInt{
     private TrainerFactory trainer1;
@@ -21,59 +23,28 @@ public class BattleFactory implements BattleFactoryInt{
         CodeAMonFactory currentCodeAMon = getCurrentCodeAMon();
         CodeAMonFactory opponentCodeAMon = getOpponentCodeAMon();
 
-        if(weather.getWeather().equalsIgnoreCase("Sunny")){
-            if(opponentCodeAMon.getType().equalsIgnoreCase("fire")){
-                if(opponentCodeAMon.health == 0){
-                    System.out.println("Opponent's CodeAMon health has NOT increased because it has fainted or not the correct type.");
-                } else {
-                    opponentCodeAMon.setHealth(opponentCodeAMon.health + 20);
-                    System.out.println("Opponent's CodeAMon health has increased by 20 due to weather.");
-                }
-            }
-            if(currentCodeAMon.getType().equalsIgnoreCase("fire")){
-                if(currentCodeAMon.health == 0){
-                    System.out.println("Trainer's CodeAMon health has NOT increased because it has fainted or not the correct type.");
-                } else {
-                    currentCodeAMon.setHealth(currentCodeAMon.health + 20);
-                    System.out.println("Trainer's CodeAMon health has increased by 20 due to weather.");
-                }
-            }
-        }
+        Map<String, String> boostWeatherByType = new HashMap<>();
+        boostWeatherByType.put("fire", "Sunny");
+        boostWeatherByType.put("water", "Rainy");
+        boostWeatherByType.put("grass", "Clear");
 
-        if(weather.getWeather().equalsIgnoreCase("Rainy")){
-            if(opponentCodeAMon.getType().equalsIgnoreCase("water")){
-                if(opponentCodeAMon.health == 0){
-                    System.out.println("Opponent's CodeAMon health has NOT increased because it has fainted or not the correct type.");
-                } else {
-                    opponentCodeAMon.setHealth(opponentCodeAMon.health + 20);
-                    System.out.println("Opponent's CodeAMon health has increased by 20 due to weather.");
-                }
-            }
-            if(currentCodeAMon.getType().equalsIgnoreCase("water")){
-                if(currentCodeAMon.health == 0){
-                    System.out.println("Trainer's CodeAMon health has NOT increased because it has fainted or not the correct type.");
-                } else {
-                    currentCodeAMon.setHealth(currentCodeAMon.health + 20);
-                    System.out.println("Trainer's CodeAMon health has increased by 20 due to weather.");
-                }
-            }
-        }
+        String currentWeather = weather.getWeather();
 
-        if(weather.getWeather().equalsIgnoreCase("clear")){
-            if(opponentCodeAMon.getType().equalsIgnoreCase("grass")){
-                if(opponentCodeAMon.health == 0){
-                    System.out.println("Opponent's CodeAMon health has NOT increased because it has fainted or not the correct type.");
-                } else {
-                    opponentCodeAMon.setHealth(opponentCodeAMon.health + 20);
-                    System.out.println("Opponent's CodeAMon health has increased by 20 due to weather.");
-                }
+        for (Map.Entry<String, String> entry : boostWeatherByType.entrySet()) {
+            String type = entry.getKey();
+            String boostWeather = entry.getValue();
+            CodeAMonFactory codeAMon = currentCodeAMon;
+            String trainer = "Trainer's";
+            if (opponentCodeAMon.getType().equalsIgnoreCase(type) && boostWeather.equalsIgnoreCase(currentWeather)) {
+                codeAMon = opponentCodeAMon;
+                trainer = "Opponent's";
             }
-            if(currentCodeAMon.getType().equalsIgnoreCase("grass")){
-                if(currentCodeAMon.health == 0){
-                    System.out.println("Trainer's CodeAMon health has NOT increased because it has fainted or not the correct type.");
+            if (codeAMon.getType().equalsIgnoreCase(type)) {
+                if (codeAMon.health == 0) {
+                    System.out.println(trainer + " CodeAMon health has NOT increased because it has fainted or not the correct type.");
                 } else {
-                    currentCodeAMon.setHealth(currentCodeAMon.health + 20);
-                    System.out.println("Trainer's CodeAMon health has increased by 20 due to weather.");
+                    codeAMon.setHealth(codeAMon.health + 20);
+                    System.out.println(trainer + " CodeAMon health has increased by 20 due to weather.");
                 }
             }
         }
@@ -122,7 +93,7 @@ public class BattleFactory implements BattleFactoryInt{
     }
 
     // method to determine if the battle is over
-    private boolean isBattleOver() {
+    public boolean isBattleOver() {
         return trainer1.getCodeAMons().length == trainer1.getFaintedCodeAMon() || trainer2.getCodeAMons().length == trainer2.getFaintedCodeAMon();
     }
 
