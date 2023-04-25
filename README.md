@@ -4,7 +4,7 @@
 
 To create the code-a-mon implementation, I will use the following decorator patterns
 - Decorator Pattern: used for different types of Code-A-Mon
-- Factory Pattern: used to build new code-a-mon, trainers, attacks, battles, and worlds
+- Factory Pattern: used to build new code-a-mon, trainers, attacks, battles, and worlds. Interfaces created for each factory class.
 - Mediator Pattern: used to create the cycle-based stimulation. This is directly seen in WorldMediator.java
 
 # Requirements fulfilled
